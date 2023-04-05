@@ -16,8 +16,11 @@ jobs:
           
           if grep -q "$MARKED" "$README_FILE"; then
             echo "Integration test run"
+            exit 0
           elif grep -q "$CHECKBOX" "$README_FILE"; then
             echo "Integration test not run"
+            exit 1
           else
             echo "Checkbox not found in README"
+            exit 1
           fi
