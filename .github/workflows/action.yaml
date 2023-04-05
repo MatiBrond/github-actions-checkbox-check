@@ -9,12 +9,6 @@ jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
       - name: Check README
         run: |
           CHECKBOX="[ ]  Integration test (Mandatory)"
