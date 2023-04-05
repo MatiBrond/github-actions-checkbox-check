@@ -1,5 +1,4 @@
 name: Check README
-description: 'Check if integration test checkbox has been marked'
 
 on:
   pull_request:
