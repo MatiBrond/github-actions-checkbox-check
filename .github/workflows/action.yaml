@@ -18,7 +18,7 @@ jobs:
         run: |
           CHECKBOX="[ ]  Integration test (Mandatory)"
           MARKED="[x]  Integration test (Mandatory)"
-          README_FILE="pull_request_template.md"
+          README_FILE="./pull_request_template.md"
           
           if grep -q "$MARKED" "$README_FILE"; then
             echo "Integration test run"
