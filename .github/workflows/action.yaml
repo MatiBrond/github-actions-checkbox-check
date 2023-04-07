@@ -24,7 +24,7 @@ jobs:
           echo "pr template"
 
       - name: Mostrar la descripcion del PR
-        run: echo "${{ github.event.pull_request.description }}"
+        run: echo "${{ github.event.description }}"
 
       - name: Mostrar title
         run: echo "${{ github.event.pull_request.title }}"
