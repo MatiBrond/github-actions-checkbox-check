@@ -26,17 +26,11 @@ jobs:
       - name: Mostrar la body del PR
         run: echo "${{ github.event.pull_request.body }}"
 
-      - name: Mostrar la desc del PR
-        run: echo "${{ github.event.pull_request.labels }}"
-
-      - name: Mostrar title
-        run: echo "${{ github.event.pull_request.title }}"
-
       - name: Check README
         run: |
           CHECKBOX="\[ \]  Integration test (Mandatory)"
           MARKED="\[x\]  Integration test (Mandatory)"
-          README_FILE="${{ github.event.pull_request.body }}"
+          README_FILE="{{ github.event.pull_request.body }}"
           
           if grep -q "$MARKED" "$README_FILE"; then
             echo "Integration test run"
