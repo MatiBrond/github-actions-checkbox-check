@@ -30,7 +30,7 @@ jobs:
         run: |
           CHECKBOX="\[ \]  Integration test (Mandatory)"
           MARKED="\[x\]  Integration test (Mandatory)"
-          README_FILE="{{ github.event.pull_request.body }}"
+          README_FILE="${{ github.event.pull_request.body }}"
           
           if grep -q "$MARKED" "$README_FILE"; then
             echo "Integration test run"
