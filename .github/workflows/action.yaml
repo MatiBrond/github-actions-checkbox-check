@@ -31,8 +31,8 @@ jobs:
 
       - name: Check README
         run: |
-          CHECKBOX="[ ]  Integration test (Mandatory)"
-          MARKED="[x]  Integration test (Mandatory)"
+          CHECKBOX="\[ \]  Integration test (Mandatory)"
+          MARKED="\[x\]  Integration test (Mandatory)"
           README_FILE="./pull_request_template.md"
           
           if grep -q "$MARKED" "$README_FILE"; then
