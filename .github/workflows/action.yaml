@@ -23,8 +23,11 @@ jobs:
           cat ./pull_request_template.md
           echo "pr template"
 
-      - name: Mostrar la descripcion del PR
-        run: echo "${{ github.event.body }}"
+      - name: Mostrar la body del PR
+        run: echo "${{ github.event.pull_request.body }}"
+
+      - name: Mostrar la desc del PR
+        run: echo "${{ github.event.pull_request.labels }}"
 
       - name: Mostrar title
         run: echo "${{ github.event.pull_request.title }}"
