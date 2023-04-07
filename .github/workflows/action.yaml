@@ -1,35 +1,25 @@
 name: Check README
-description: 'Check if integration test checkbox has been marked'
-
-
-branding:
-  icon: 'award'
-  color: 'green'
-
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize, edited]
 
 jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
       - name: Check README
         run: |
-          CHECKBOX="[ ]  Integration test (Mandatory)"
-          MARKED="[x]  Integration test (Mandatory)"
-          README_FILE="./pull_request_template.md"
+          CHECKBOX="\[ \]  Integration test (Mandatory)"
+          MARKED="\[x\]  Integration test (Mandatory)"
+          README_FILE="${{ github.event.pull_request.body }}"
           
-          if grep -q "$MARKED" "$README_FILE"; then
+          if echo "$README_FILE" | grep -q "$MARKED"; then
             echo "Integration test run"
-          elif grep -q "$CHECKBOX" "$README_FILE"; then
+            exit 0
+          elif echo "$README_FILE" | grep -q "$CHECKBOX"; then
             echo "Integration test not run"
+            exit 1
           else
             echo "Checkbox not found in README"
+            exit 1
           fi
