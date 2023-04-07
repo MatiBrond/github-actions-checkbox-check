@@ -29,6 +29,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
+      - name: Mostrar la descripcion del PR
+        run: echo "${{ steps.pr-details.outputs.data.body }}"
+
       - name: Check README
         run: |
           CHECKBOX="\[ \]  Integration test (Mandatory)"
