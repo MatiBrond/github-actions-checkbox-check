@@ -23,14 +23,11 @@ jobs:
           cat ./pull_request_template.md
           echo "pr template"
 
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
       - name: Mostrar la descripcion del PR
         run: echo "${{ github.event.pull_request.description }}"
+
+      - name: Mostrar title
+        run: echo "${{ github.event.pull_request.title }}"
 
       - name: Check README
         run: |
