@@ -32,10 +32,10 @@ jobs:
           MARKED="\[x\]  Integration test (Mandatory)"
           README_FILE="${{ github.event.pull_request.body }}"
           
-          if grep -q "$MARKED" "$README_FILE"; then
+          if echo "$README_FILE" | grep -q "$MARKED"; then
             echo "Integration test run"
             exit 0
-          elif grep -q "$CHECKBOX" "$README_FILE"; then
+          elif echo "$README_FILE" | grep -q "$CHECKBOX"; then
             echo "Integration test not run"
             exit 1
           else
