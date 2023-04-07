@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Print PR Template
         run: |
+          ls -l 
+          
+      - name: Print PR Template
+        run: |
           README_FILE="pull_request_template.md"
           cat ./pull_request_template.md
           echo "pr template"
