@@ -7,25 +7,6 @@ jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-          
-      - name: Print PR Template
-        run: |
-          ls -l 
-          
-      - name: Print PR Template
-        run: |
-          README_FILE="pull_request_template.md"
-          cat ./pull_request_template.md
-          echo "pr template"
-
-      - name: Mostrar la body del PR
-        run: echo "${{ github.event.pull_request.body }}"
-
       - name: Check README
         run: |
           CHECKBOX="\[ \]  Integration test (Mandatory)"
