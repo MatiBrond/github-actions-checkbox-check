@@ -10,7 +10,7 @@ jobs:
       - name: Print PR Template
         run: |
           README_FILE="pull_request_template.md"
-          cat "$README_FILE"
+          cat ./pull_request_template.md
           echo "pr template"
 
       - name: Check out code
