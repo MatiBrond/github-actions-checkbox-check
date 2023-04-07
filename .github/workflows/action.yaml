@@ -1,7 +1,7 @@
 name: Check README
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize, edited]
 
 jobs:
   check_readme:
