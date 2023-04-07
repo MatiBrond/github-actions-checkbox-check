@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Mostrar la descripcion del PR
-        run: echo "${{ steps.pr-details.outputs.data.body }}"
+        run: echo "${{ github.event.pull_request.description }}"
 
       - name: Check README
         run: |
