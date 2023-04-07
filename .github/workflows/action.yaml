@@ -1,5 +1,4 @@
 name: Check README
-
 on:
   pull_request:
     types: [opened, edited]
@@ -8,6 +7,11 @@ jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
+      - name: Print PR Template
+        run: |
+          README_FILE="./pull_request_template.md"
+          cat "$README_FILE"
+
       - name: Check out code
         uses: actions/checkout@v2
         with:
