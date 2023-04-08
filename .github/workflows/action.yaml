@@ -18,10 +18,10 @@ jobs:
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           echo $CHECKED
           echo $UNCHECKED
-          if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
+          if echo "$PR_DESCRIPTION" | grep -q $CHECKED; then
             echo "Checkbox is checked"
             exit 0
-          elif echo "$PR_DESCRIPTION" | grep -q "$UNCHECKED"; then
+          elif echo "$PR_DESCRIPTION" | grep -q $UNCHECKED; then
             echo "Checkbox is not checked"
             exit 1
           else
