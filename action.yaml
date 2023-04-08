@@ -5,26 +5,25 @@ on:
 
 # Here you must declare the name of the checkbox you want to verify
 env:
-  checkbox: " Integration test (Mandatory)"
+  checkbox: "Integration test (Mandatory)"
 
 jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check README
+      - name: Check pull request description
         run: |
-          CHECKBOX="\[ \] " + $checkbox
-          MARKED="\[x\] " + $checkbox
-          README_FILE="${{ github.event.pull_request.body }}"
-          
-          if echo "$README_FILE" | grep -q "$MARKED"; then
+          CHECKED="\[x\]\  $checkbox"
+          UNCHECKED="\[ \]\  $checkbox"
+          PR_DESCRIPTION="${{ github.event.pull_request.body }}"
+
+          if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
             echo "Checkbox is checked"
             exit 0
-          elif echo "$README_FILE" | grep -q "$CHECKBOX"; then
+          elif echo "$PR_DESCRIPTION" | grep -q "$UNCHECKED"; then
             echo "Checkbox is not checked"
             exit 1
           else
             echo "Checkbox not found in pull request description"
             exit 1
           fi
-
