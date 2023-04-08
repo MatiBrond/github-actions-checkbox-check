@@ -14,7 +14,7 @@ jobs:
       - name: Check pull request description
         run: |
           CHECKED="\[x\]  $checkbox"
-          UNCHECKED="\[ \] $checkbox"
+          UNCHECKED="\[ \]  $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           echo $CHECKED
           echo $UNCHECKED
