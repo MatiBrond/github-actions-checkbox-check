@@ -15,8 +15,8 @@ jobs:
         run: |
           CHECKED="\[x\]  "
           UNCHECKED="\[ \]  "
-          $UNCHECKED+="$checkbox"
-          $CHECKED+="$checkbox"
+          $UNCHECKED+=$checkbox
+          $CHECKED+=$checkbox
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           echo $MARKED
           echo $UNMARKED
