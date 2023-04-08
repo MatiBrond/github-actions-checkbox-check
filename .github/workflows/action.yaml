@@ -5,7 +5,7 @@ on:
 
 # Here you must declare the name of the checkbox you want to verify
 env:
-  checkbox: "  Integration test (Mandatory)"
+  checkbox: " Integration test (Mandatory)"
 
 jobs:
   check_readme:
@@ -16,8 +16,8 @@ jobs:
           CHECKED="\[x\]  $checkbox"
           UNCHECKED="\[ \] $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
-          echo $MARKED
-          echo $UNMARKED
+          echo CHECKED
+          echo UNCHECKED
           if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
             echo "Checkbox is checked"
             exit 0
