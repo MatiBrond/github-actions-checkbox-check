@@ -13,17 +13,15 @@ jobs:
     steps:
       - name: Check pull request description
         run: |
-          CHECKED="\[x\]  "
-          UNCHECKED="\[ \]  "
-          $UNCHECKED+=$checkbox
-          $CHECKED+=$checkbox
+          CHECKED="\[x\]  $checkbox"
+          UNCHECKED="\[ \] $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           echo $MARKED
           echo $UNMARKED
-          if echo "$PR_DESCRIPTION" | grep -q "$MARKED"; then
+          if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
             echo "Checkbox is checked"
             exit 0
-          elif echo "$PR_DESCRIPTION" | grep -q "$UNMARKED"; then
+          elif echo "$PR_DESCRIPTION" | grep -q "$UNCHECKED"; then
             echo "Checkbox is not checked"
             exit 1
           else
