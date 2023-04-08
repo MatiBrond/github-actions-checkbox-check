@@ -5,7 +5,7 @@ on:
 
 # Here you must declare the name of the checkbox you want to verify
 env:
-  checkbox: " Integration test (Mandatory)"
+  checkbox: "  Integration test (Mandatory)"
 
 jobs:
   check_readme:
