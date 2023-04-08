@@ -5,7 +5,7 @@ on:
 
 # Here you must declare the name of the checkbox you want to verify
 env:
-  checkbox: "  Integration test (Mandatory)"
+  checkbox: "Integration test (Mandatory)"
 
 jobs:
   check_readme:
@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Check pull request description
         run: |
-          CHECKED="\[x\]  Integration test (Mandatory)"
-          UNCHECKED="\[ \]  Integration test (Mandatory)"
+          CHECKED="\[x\]  $checkbox"
+          UNCHECKED="\[ \]  $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           echo $CHECKED
           echo $UNCHECKED
