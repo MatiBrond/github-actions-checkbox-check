@@ -6,8 +6,6 @@ on:
 # Here you must declare the name of the checkbox you want to verify
 env:
   checkbox: " Integration test (Mandatory)"
-  marked: "\[ \] "
-  unmarked: "\[x\] "
 
 jobs:
   check_readme:
@@ -15,14 +13,16 @@ jobs:
     steps:
       - name: Check README
         run: |
-          UNMARKED="$unmarked $checkbox"
-          MARKED="$marked $checkbox"
-          README_FILE="${{ github.event.pull_request.body }}"
+          CHECKED="\[x\] "
+          UNCHECKED="\[ \] "
+          UNMARKED="$UNCHECKED $checkbox"
+          MARKED="$CHECKED $checkbox"
+          PR_DESCRIPTION="${{ github.event.pull_request.body }}"
           
-          if echo "$README_FILE" | grep -q "$MARKED"; then
+          if echo "$PR_DESCRIPTION" | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
-          elif echo "$README_FILE" | grep -q "$CHECKBOX"; then
+          elif echo "$PR_DESCRIPTION" | grep -q "$UNMARKED"; then
             echo "Checkbox is not checked"
             exit 1
           else
