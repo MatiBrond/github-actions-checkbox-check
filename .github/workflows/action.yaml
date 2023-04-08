@@ -16,8 +16,8 @@ jobs:
           CHECKED="\[x\]  $checkbox"
           UNCHECKED="\[ \] $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
-          echo CHECKED
-          echo UNCHECKED
+          echo $CHECKED
+          echo $UNCHECKED
           if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
             echo "Checkbox is checked"
             exit 0
