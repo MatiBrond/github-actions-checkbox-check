@@ -11,14 +11,15 @@ jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check README
+      - name: Check pull request description
         run: |
           CHECKED="\[x\] "
           UNCHECKED="\[ \] "
           UNMARKED="$UNCHECKED $checkbox"
           MARKED="$CHECKED $checkbox"
           PR_DESCRIPTION="${{ github.event.pull_request.body }}"
-          
+          echo $MARKED
+          echo $UNMARKED
           if echo "$PR_DESCRIPTION" | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
