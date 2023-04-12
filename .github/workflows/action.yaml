@@ -1,7 +1,7 @@
 name: Check pull request description checkbox
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize, edited]
 
 jobs:
   check_pull_request:
