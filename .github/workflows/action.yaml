@@ -12,6 +12,9 @@ jobs:
           CHECKBOX="[ ]  Integration test (Mandatory)"
           MARKED="[x]  Integration test (Mandatory)"
           README_FILE="${{ github.event.pull_request.body }}"
+          echo "pull request descirption"
+          echo "$README_FILE" > "$nombre_archivo"
+          echo "ya en el file"
           if echo $(cat "$README_FILE") | grep -Fq "$MARKED"; then
             echo "Integration test run"
             exit 0
