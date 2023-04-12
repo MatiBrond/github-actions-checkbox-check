@@ -11,7 +11,7 @@ jobs:
         run: |
           CHECKBOX="[ ]  Integration test (Mandatory)"
           MARKED="[x]  Integration test (Mandatory)"
-          README_FILE="${{ github.event.pull_request.body }}"
+          README_FILE="${{ github.event.pull_request.bodyText }}"
           echo "pull request descirption"
           cat '$README_FILE' | grep -v "`"
           echo "ya en el file"
