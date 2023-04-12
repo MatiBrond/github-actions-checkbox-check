@@ -13,7 +13,7 @@ jobs:
           MARKED="[x]  Integration test (Mandatory)"
           README_FILE="${{ github.event.pull_request.body }}"
           echo "pull request descirption"
-          echo "$README_FILE" > "$nombre_archivo"
+          echo "${{ github.event.pull_request.body }}" > "$nombre_archivo"
           echo "ya en el file"
           if echo $(cat "$README_FILE") | grep -Fq "$MARKED"; then
             echo "Integration test run"
