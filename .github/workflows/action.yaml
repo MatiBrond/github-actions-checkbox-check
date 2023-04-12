@@ -14,7 +14,7 @@ jobs:
           README_FILE="${{ github.event.pull_request.body }}"
           echo "reading body"
           echo $(cat $README_FILE)
-          if echo $(cat $README_FILE) | grep -Fq "$MARKED"; then
+          if echo $(cat "$README_FILE)" | grep -Fq "$MARKED"; then
             echo "Integration test run"
             exit 0
           elif echo $(cat "$README_FILE") | grep -Fq "$CHECKBOX"; then
