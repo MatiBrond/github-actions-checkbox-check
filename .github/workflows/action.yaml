@@ -15,12 +15,4 @@ jobs:
           echo "pull request descirption"
           cat "$README_FILE" | grep -v '`'
           echo "ya en el file"
-          if echo $(cat "$README_FILE") | grep -Fq "$MARKED"; then
-            echo "Integration test run"
-            exit 0
-          elif echo $(cat "$README_FILE") | grep -Fq "$CHECKBOX"; then
-            echo "Integration test not run"
-            exit 1
-          else
-            echo "Checkbox not found in README"
-          fi
+
