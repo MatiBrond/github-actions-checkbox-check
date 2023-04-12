@@ -1,6 +1,4 @@
-name: Check README
-description: 'Check if integration test checkbox has been marked'
-
+name: Check pull request description checkbox
 on:
   pull_request:
     types: [opened, edited]
@@ -24,5 +22,4 @@ jobs:
             exit 1
           else
             echo "Checkbox not found in README"
-            exit 1
           fi

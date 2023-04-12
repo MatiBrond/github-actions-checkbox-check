@@ -1,35 +1,29 @@
-name: Check README
-description: 'Check if integration test checkbox has been marked'
-
-
-branding:
-  icon: 'award'
-  color: 'green'
-
+name: Check pull request description checkbox
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, synchronize, edited]
+
+# Here you must declare the name of the checkbox you want to verify
+env:
+  checkbox: "Integration test (Mandatory)"
 
 jobs:
   check_readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Check README
+      - name: Check pull request description
         run: |
-          CHECKBOX="[ ]  Integration test (Mandatory)"
-          MARKED="[x]  Integration test (Mandatory)"
-          README_FILE="./pull_request_template.md"
-          
-          if grep -q "$MARKED" "$README_FILE"; then
-            echo "Integration test run"
-          elif grep -q "$CHECKBOX" "$README_FILE"; then
-            echo "Integration test not run"
+          CHECKED="\[x\]\  $checkbox"
+          UNCHECKED="\[ \]\  $checkbox"
+          PR_DESCRIPTION="${{ github.event.pull_request.body }}"
+
+          if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
+            echo "Checkbox is checked"
+            exit 0
+          elif echo "$PR_DESCRIPTION" | grep -q "$UNCHECKED"; then
+            echo "Checkbox is not checked"
+            exit 1
           else
-            echo "Checkbox not found in README"
+            echo "Checkbox not found in pull request description"
+            exit 1
           fi
