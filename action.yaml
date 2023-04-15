@@ -4,23 +4,24 @@ on:
     types: [opened, synchronize, edited]
 
 # Here you must declare the name of the checkbox you want to verify
+# remember the name of your checkbox must be in lowercase
 env:
-  checkbox: "Integration test (Mandatory)"
+  checkbox: "integration test (mandatory)"
 
 jobs:
-  check_readme:
+  check_pull_request:
     runs-on: ubuntu-latest
     steps:
       - name: Check pull request description
+        env:
+          BODY: ${{ github.event.pull_request.body }}
         run: |
-          CHECKED="\[x\]\  $checkbox"
-          UNCHECKED="\[ \]\  $checkbox"
-          PR_DESCRIPTION="${{ github.event.pull_request.body }}"
-
-          if echo "$PR_DESCRIPTION" | grep -q "$CHECKED"; then
+          UNCHECKED="\[ \] $checkbox"
+          MARKED="\[x\] $checkbox"
+           if echo ${BODY,,} | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
-          elif echo "$PR_DESCRIPTION" | grep -q "$UNCHECKED"; then
+          elif echo ${BODY,,} | grep -q "$UNCHECKED"; then
             echo "Checkbox is not checked"
             exit 1
           else

@@ -13,7 +13,6 @@ jobs:
         run: |
           UNCHECKED="\[ \] integration test"
           MARKED="\[x\] integration test"
-          echo ${BODY,,}
            if echo ${BODY,,} | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
