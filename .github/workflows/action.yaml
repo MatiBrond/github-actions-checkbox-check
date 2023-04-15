@@ -13,7 +13,6 @@ jobs:
           MARKED="[x]  Integration test (Mandatory)"
           README_FILE="${{ github.event.pull_request.body }}"
           echo "pull request descirption"
-          echo "$README_FILE"
           grep -v '`' $(cat "$README_FILE")
           echo "ya en el file"
 
