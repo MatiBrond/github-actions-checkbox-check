@@ -15,10 +15,10 @@ jobs:
           MARKED="[x]  integration test (mandatory)"
           echo ${BODY,,}
           
-           if echo ${BODY,,} | grep -q "$MARKED"; then
+           if echo ${BODY,,} | grep -q $MARKED; then
             echo "Checkbox is checked"
             exit 0
-          elif echo ${BODY,,} | grep -q "$UNCHECKED"; then
+          elif echo ${BODY,,} | grep -q $UNCHECKED; then
             echo "Checkbox is not checked"
             exit 1
           else
