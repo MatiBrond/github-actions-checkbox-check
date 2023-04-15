@@ -1,4 +1,10 @@
 name: Check pull request description checkbox
+description: 'Validate if a specific checkbox in a pull request description is checked or not.'
+
+branding:
+  icon: 'award'
+  color: 'green'
+
 on:
   pull_request:
     types: [opened, synchronize, edited]
