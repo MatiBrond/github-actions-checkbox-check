@@ -11,11 +11,11 @@ jobs:
         env:
           BODY: ${{ github.event.pull_request.body }}
         run: |
-          CHECKBOX="[ ]  Integration test (Mandatory)"
-          MARKED="[x]  Integration test (Mandatory)"
+          UNCHECKED="[ ]  integration test (mandatory)"
+          MARKED="[x]  integration test (mandatory)"
           echo ${BODY,,}
           
-           if echo ${BODY,,} | grep -q "$CHECKED"; then
+           if echo ${BODY,,} | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
           elif echo ${BODY,,} | grep -q "$UNCHECKED"; then
