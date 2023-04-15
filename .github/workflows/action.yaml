@@ -11,8 +11,8 @@ jobs:
         env:
           BODY: ${{ github.event.pull_request.body }}
         run: |
-          UNCHECKED="\[ \]  integration test (mandatory)"
-          MARKED="\[x\]  integration test (mandatory)"
+          UNCHECKED="[ ]  integration test"
+          MARKED="[x]  integration test"
           echo ${BODY,,}
           
            if echo ${BODY,,} | grep -q "$MARKED"; then
