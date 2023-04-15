@@ -14,6 +14,6 @@ jobs:
           README_FILE="${{ github.event.pull_request.body }}"
           echo "pull request descirption"
           echo "$README_FILE"
-          cat "$README_FILE" | grep -v '`'
+          grep -v '`' $(cat "$README_FILE")
           echo "ya en el file"
 
