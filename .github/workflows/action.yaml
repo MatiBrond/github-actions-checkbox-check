@@ -14,6 +14,15 @@ jobs:
           CHECKBOX="[ ]  Integration test (Mandatory)"
           MARKED="[x]  Integration test (Mandatory)"
           echo ${BODY,,}
-          echo "pull request descirption"
-          echo "ya en el file"
+          
+           if echo ${BODY,,} | grep -q "$CHECKED"; then
+            echo "Checkbox is checked"
+            exit 0
+          elif echo ${BODY,,} | grep -q "$UNCHECKED"; then
+            echo "Checkbox is not checked"
+            exit 1
+          else
+            echo "Checkbox not found in pull request description"
+            exit 1
+          fi
 
