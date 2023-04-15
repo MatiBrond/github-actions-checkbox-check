@@ -13,7 +13,7 @@ jobs:
           MARKED="[x]  Integration test (Mandatory)"
                     echo "pull request descirption"
 
-          README_FILE="${{ github.event.pull_request.body }}"
+          README_FILE= awk '{gsub(/`/, ""); print}' "${{ github.event.pull_request.body }}"
           echo "pull request descirption"
           awk '{gsub(/`/, ""); print}' $README_FILE
           echo "ya en el file"
