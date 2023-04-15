@@ -15,7 +15,7 @@ jobs:
           MARKED="[x]  integration test"
           echo ${BODY,,}
           replacement= $(echo "${BODY,,}" | awk '{gsub(/`/, ""); print}')
-          echo $replacement
+          echo "$replacement"
            if echo ${BODY,,} | grep -q "$MARKED"; then
             echo "Checkbox is checked"
             exit 0
